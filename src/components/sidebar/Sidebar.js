@@ -4,33 +4,55 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { toggleSidebar } from '../../actions/sidebar';
 import { menuItems } from '../../menu';
+import { logout } from '../../actions/auth';
+import HomeIcon from '@material-ui/icons/Home';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+
+const icons = {
+    Home: HomeIcon,
+    'My Account': AccountCircleIcon,
+    Reports: LibraryBooksIcon,
+    Logout: ExitToAppIcon
+};
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
         top: 64,
         width: 0,
         transition: theme.transitions.create(['width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
+            easing: theme.transitions.easing.easeIn,
+            duration: 200,
         })
     },
     drawerOpen: {
         width: 240
+    },
+    selected: {
+        color: theme.palette.primary.main
+    },
+    item: {
+        whiteSpace: 'nowrap'
     }
 }));
 
 function Sidebar() {
+    const { pathname } = useLocation();
     const { expanded } = useSelector(state => state.sidebar);
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
     const redirect = useCallback((url) => {
+        if (url === '/logout') {
+            dispatch(logout());
+            url = '/';
+        }
         history.push(url);
         dispatch(toggleSidebar());
     }, [dispatch, history]);
@@ -42,12 +64,15 @@ function Sidebar() {
             }}
         >
             <List>
-                {menuItems.map(({label, url}, index) => (
-                    <ListItem button key={label} onClick={() => redirect(url)}>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary={label} />
-                    </ListItem>
-                ))}
+                {menuItems.map(({ label, url }, index) => {
+                    const IconComponent = icons[label];
+                    return (
+                        <ListItem className={classes.item} button key={label} onClick={() => redirect(url)}>
+                            <ListItemIcon><IconComponent color={`${pathname === url ? 'primary' : ''}`} /></ListItemIcon>
+                            <ListItemText primary={label} className={`${pathname === url ? classes.selected : ''}`} />
+                        </ListItem>
+                    )
+                })}
             </List>
         </Drawer>
     );

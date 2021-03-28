@@ -6,5 +6,13 @@ export const menuItems = [
     {
         label: 'My Account',
         url: '/account'
+    },
+    {
+        label: 'Reports',
+        url: '/reports'
+    },
+    {
+        label: 'Logout',
+        url: '/logout'
     }
 ];
