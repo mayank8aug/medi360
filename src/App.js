@@ -11,6 +11,8 @@ import { ThemeProvider } from '@material-ui/styles';
 import { useSelector } from 'react-redux';
 import ToastMessage from './components/notifications/ToastMessage';
 import Auth from './components/auth/Auth';
+import Reports from './components/reports/Reports';
+import NewReport from './components/reports/NewReports';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -33,6 +35,8 @@ function App() {
                 <Sidebar />
                 <Route path="/" exact component={Home} />
                 <Route path="/account" exact component={MyAccount} />
+                <Route path="/reports" exact component={Reports} />
+                <Route path="/new-report" exact component={NewReport} />
               </div>
             </> :
             <Auth />

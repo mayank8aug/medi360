@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 700,
     },
     button: {
-        color: '#fff',
         marginTop: 32
     },
     link: {

@@ -25,7 +25,7 @@ function ToastMessage() {
     const handleClose = () => {
         dispatch(clearNotification());
     };
-
+    if (!message) return null;
     return (
         <div className={classes.root}>
             <Snackbar open={Boolean(message)} autoHideDuration={timeout} onClose={handleClose}>

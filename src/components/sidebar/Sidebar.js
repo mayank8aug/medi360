@@ -68,7 +68,7 @@ function Sidebar() {
                     const IconComponent = icons[label];
                     return (
                         <ListItem className={classes.item} button key={label} onClick={() => redirect(url)}>
-                            <ListItemIcon><IconComponent color={`${pathname === url ? 'primary' : ''}`} /></ListItemIcon>
+                            <ListItemIcon><IconComponent color={`${pathname === url ? 'primary' : 'inherit'}`} /></ListItemIcon>
                             <ListItemText primary={label} className={`${pathname === url ? classes.selected : ''}`} />
                         </ListItem>
                     )
