@@ -3,8 +3,8 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
 function Auth() {
-    const { pathname } = useLocation();
-    if (pathname === '/register') {
+    const { state } = useLocation();
+    if (state && state.context === 'register') {
         return <SignUp />;
     } else {
         return <SignIn />;

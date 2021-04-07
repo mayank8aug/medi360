@@ -1,5 +1,5 @@
 import { TextField } from 'final-form-material-ui';
-import React from 'react';
+import React, { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import { Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,10 +7,15 @@ import { Link } from 'react-router-dom';
 import { isNotEmpty, isValidEmail } from '../../utils/validate';
 import { useDispatch } from 'react-redux';
 import { login } from '../../actions/auth';
+import SocialAuth from './SocialAuth';
+import Logo from '../branding/Logo';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
     form: {
-        margin: 32
+        margin: 20
     },
     title: {
         fontWeight: 700,
@@ -30,10 +35,23 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.primary.main,
         textDecoration: 'none',
         fontWeight: 600
+    },
+    separator: {
+        display: 'flex',
+        justifyContent: 'center',
+        fontSize: '14px'
+    },
+    eyeBtn: {
+        position: 'absolute',
+        right: '10px'
+    },
+    w100: {
+        width: '100%'
     }
 }));
 
 function SignIn() {
+    const [showPassword, setShowPassword] = useState(false);
     const classes = useStyles();
     const dispatch = useDispatch();
     const onSubmit = (values) => {
@@ -45,6 +63,7 @@ function SignIn() {
                 onSubmit={onSubmit}
                 render={({ handleSubmit, submitting, values }) =>
                     <form onSubmit={handleSubmit} className={classes.form} noValidate>
+                        <Logo />
                         <div className={classes.title}>Sign In</div>
                         <Grid container justify="center">
                             <Grid item xs={12} className={classes.field}>
@@ -62,20 +81,28 @@ function SignIn() {
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} className={classes.field}>
+                            <div className={classes.w100}>
                                 <Field
                                     fullWidth
                                     required
                                     validate={isNotEmpty}
                                     name="password"
+                                    placeholder="********"
                                     component={TextField}
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     label={<span className={classes.label}>Password</span>}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
                                 />
-                            </Grid>
+                                <IconButton
+                                    className={classes.eyeBtn}
+                                    aria-label="toggle password visibility"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </div>
                             <Button fullWidth type="submit" disabled={submitting} variant="contained" color="primary" className={classes.button}>
                                 Login
                             </Button>
@@ -83,7 +110,9 @@ function SignIn() {
                     </form>
                 }
             />
-            <Grid container justify="space-around"><Grid item>I'm a new member. <Link className={classes.link} to="/register">Sign Up</Link></Grid></Grid>
+            <div className={classes.separator}>OR</div>
+            <SocialAuth />
+            <Grid container justify="space-around"><Grid item>I'm a new member. <Link className={classes.link} to={{ pathname: '/', state: { context: 'register' } }}>Sign Up</Link></Grid></Grid>
         </>
     )
 }
