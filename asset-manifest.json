@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/medi360/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/medi360/static/js/main.993952e2.chunk.js",
-    "main.js.map": "/medi360/static/js/main.993952e2.chunk.js.map",
+    "main.js": "/medi360/static/js/main.a1d72583.chunk.js",
+    "main.js.map": "/medi360/static/js/main.a1d72583.chunk.js.map",
     "runtime-main.js": "/medi360/static/js/runtime-main.6082472b.js",
     "runtime-main.js.map": "/medi360/static/js/runtime-main.6082472b.js.map",
     "static/js/2.2c59cf96.chunk.js": "/medi360/static/js/2.2c59cf96.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.6082472b.js",
     "static/js/2.2c59cf96.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.993952e2.chunk.js"
+    "static/js/main.a1d72583.chunk.js"
   ]
 }
