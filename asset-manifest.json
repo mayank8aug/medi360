@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/medi360/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/medi360/static/js/main.bca9927b.chunk.js",
-    "main.js.map": "/medi360/static/js/main.bca9927b.chunk.js.map",
-    "runtime-main.js": "/medi360/static/js/runtime-main.d85e355d.js",
-    "runtime-main.js.map": "/medi360/static/js/runtime-main.d85e355d.js.map",
-    "static/js/2.4feaeead.chunk.js": "/medi360/static/js/2.4feaeead.chunk.js",
-    "static/js/2.4feaeead.chunk.js.map": "/medi360/static/js/2.4feaeead.chunk.js.map",
-    "static/js/3.4e75d77e.chunk.js": "/medi360/static/js/3.4e75d77e.chunk.js",
-    "static/js/3.4e75d77e.chunk.js.map": "/medi360/static/js/3.4e75d77e.chunk.js.map",
+    "main.js": "/medi360/static/js/main.da7ef197.chunk.js",
+    "main.js.map": "/medi360/static/js/main.da7ef197.chunk.js.map",
+    "runtime-main.js": "/medi360/static/js/runtime-main.d1c37d61.js",
+    "runtime-main.js.map": "/medi360/static/js/runtime-main.d1c37d61.js.map",
+    "static/js/2.b227e1e5.chunk.js": "/medi360/static/js/2.b227e1e5.chunk.js",
+    "static/js/2.b227e1e5.chunk.js.map": "/medi360/static/js/2.b227e1e5.chunk.js.map",
+    "static/js/3.f0d9b231.chunk.js": "/medi360/static/js/3.f0d9b231.chunk.js",
+    "static/js/3.f0d9b231.chunk.js.map": "/medi360/static/js/3.f0d9b231.chunk.js.map",
     "index.html": "/medi360/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/medi360/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.4feaeead.chunk.js.LICENSE.txt": "/medi360/static/js/2.4feaeead.chunk.js.LICENSE.txt"
+    "static/js/2.b227e1e5.chunk.js.LICENSE.txt": "/medi360/static/js/2.b227e1e5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d85e355d.js",
-    "static/js/2.4feaeead.chunk.js",
+    "static/js/runtime-main.d1c37d61.js",
+    "static/js/2.b227e1e5.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.bca9927b.chunk.js"
+    "static/js/main.da7ef197.chunk.js"
   ]
 }
