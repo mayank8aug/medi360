@@ -118,7 +118,7 @@ function SignIn() {
             />
             <div className={classes.separator}>OR</div>
             <SocialAuth />
-            <Grid container justify="space-around"><Grid item>I'm a new member. <Link className={classes.link} to={{ pathname: '/', state: { context: 'register' } }}>Sign Up</Link></Grid></Grid>
+            <Grid container justify="space-around"><Grid item>I'm a new member. <Link className={classes.link} to={{ pathname: '/medi360/', state: { context: 'register' } }}>Sign Up</Link></Grid></Grid>
         </>
     )
 }

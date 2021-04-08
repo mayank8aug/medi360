@@ -33,10 +33,10 @@ function App() {
               <Header />
               <div className={classes.container}>
                 <Sidebar />
-                <Route path="/" exact component={Home} />
-                <Route path="/account" exact component={MyAccount} />
-                <Route path="/reports" exact component={Reports} />
-                <Route path="/new-report" exact component={NewReport} />
+                <Route path="/medi360/" exact component={Home} />
+                <Route path="/medi360/account" exact component={MyAccount} />
+                <Route path="/medi360/reports" exact component={Reports} />
+                <Route path="/medi360/new-report" exact component={NewReport} />
               </div>
             </> :
             <Auth />

@@ -28,7 +28,7 @@ function Header() {
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawer}>
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" onClick={() => history.push('/')}>
+                <Typography variant="h6" onClick={() => history.push('/medi360/')}>
                     <strong>Medi360</strong>
                 </Typography>
             </Toolbar>

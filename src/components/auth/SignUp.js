@@ -132,7 +132,7 @@ function SignUp() {
             />
             <div className={classes.separator}>OR</div>
             <SocialAuth />
-            <Grid container justify="space-around"><Grid item>I'm already a member. <Link className={classes.link} to="/">Sign In</Link></Grid></Grid>
+            <Grid container justify="space-around"><Grid item>I'm already a member. <Link className={classes.link} to="/medi360/">Sign In</Link></Grid></Grid>
         </>
     )
 }

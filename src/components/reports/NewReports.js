@@ -53,7 +53,7 @@ function NewReport() {
         dispatch(createReport(formData));
     }
     const discardFn = () => {
-        history.push('/reports');
+        history.push('/medi360/reports');
     };
 
     return (

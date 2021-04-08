@@ -49,9 +49,9 @@ function Sidebar() {
     const history = useHistory();
     const dispatch = useDispatch();
     const redirect = useCallback((url) => {
-        if (url === '/logout') {
+        if (url === '/medi360/logout') {
             dispatch(logout());
-            url = '/';
+            url = '/medi360/';
         }
         history.push(url);
         dispatch(toggleSidebar());
@@ -67,7 +67,7 @@ function Sidebar() {
                 {menuItems.map(({ label, url }, index) => {
                     const IconComponent = icons[label];
                     return (
-                        <ListItem className={classes.item} button key={label} onClick={() => redirect(url)}>
+                        <ListItem className={classes.item} button key={label} onClick={() => redirect(`/medi360${url}`)}>
                             <ListItemIcon><IconComponent color={`${pathname === url ? 'primary' : 'inherit'}`} /></ListItemIcon>
                             <ListItemText primary={label} className={`${pathname === url ? classes.selected : ''}`} />
                         </ListItem>

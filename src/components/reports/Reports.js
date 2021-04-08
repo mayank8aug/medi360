@@ -13,7 +13,7 @@ function Reports() {
     const classes = useStyles();
     const history = useHistory();
     const addNewReport = useCallback(() => {
-        history.push('/new-report');
+        history.push('/medi360/new-report');
     }, [history]);
     return (
         <div className={classes.container}><Button color="primary" variant="contained" onClick={addNewReport}>+ New Report</Button></div>
