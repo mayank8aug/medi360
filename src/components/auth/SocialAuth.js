@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     btn: {
         textTransform: 'capitalize',
         color: '#fff',
-        width: '160px',
+        width: '42vw',
         borderRadius: '4px',
         fontSize: '12px',
         padding: '8px'

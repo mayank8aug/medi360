@@ -14,11 +14,21 @@ import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import AddAlertIcon from '@material-ui/icons/AddAlert';
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import { SiPreCommit } from "react-icons/si";
+import CallToActionIcon from '@material-ui/icons/CallToAction';
+import { ImLab } from "react-icons/im";
 
 const icons = {
     Home: HomeIcon,
     'My Account': AccountCircleIcon,
     Reports: LibraryBooksIcon,
+    Actions: CallToActionIcon,
+    'Medicine Alerts': AddAlertIcon,
+    Precautions: SiPreCommit,
+    'Lab Bookings': ImLab,
+    'Medical Stores': StorefrontIcon,
     Logout: ExitToAppIcon
 };
 
@@ -32,13 +42,16 @@ const useStyles = makeStyles((theme) => ({
         })
     },
     drawerOpen: {
-        width: 240
+        width: 200
     },
     selected: {
         color: theme.palette.primary.main
     },
     item: {
         whiteSpace: 'nowrap'
+    },
+    icon: {
+        minWidth: 40
     }
 }));
 
@@ -49,7 +62,7 @@ function Sidebar() {
     const history = useHistory();
     const dispatch = useDispatch();
     const redirect = useCallback((url) => {
-        if (url === '/medi360/logout') {
+        if (url === '/logout') {
             dispatch(logout());
             url = '/medi360/';
         }
@@ -64,12 +77,15 @@ function Sidebar() {
             }}
         >
             <List>
-                {menuItems.map(({ label, url }, index) => {
+                {menuItems.map(({ label, url }) => {
                     const IconComponent = icons[label];
+                    const hackUrl = `/medi360${url}`
+                    let selected = pathname === hackUrl;
+                    if (pathname === '/medi360/new-report' && hackUrl === '/medi360/reports') selected = true;
                     return (
-                        <ListItem className={classes.item} button key={label} onClick={() => redirect(`/medi360${url}`)}>
-                            <ListItemIcon><IconComponent color={`${pathname === url ? 'primary' : 'inherit'}`} /></ListItemIcon>
-                            <ListItemText primary={label} className={`${pathname === url ? classes.selected : ''}`} />
+                        <ListItem className={classes.item} button key={label} onClick={() => redirect(hackUrl)}>
+                            <ListItemIcon className={classes.icon}><IconComponent color={`${selected ? 'primary' : 'inherit'}`} /></ListItemIcon>
+                            <ListItemText primary={label} className={`${selected ? classes.selected : ''}`} />
                         </ListItem>
                     )
                 })}

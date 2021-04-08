@@ -58,7 +58,6 @@ function SignIn() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const { loading } = useSelector(state => state.auth);
-    console.log(loading);
     const onSubmit = (values) => {
         if (loading) return;
         dispatch(login(values));
