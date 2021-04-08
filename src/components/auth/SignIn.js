@@ -1,11 +1,11 @@
 import { TextField } from 'final-form-material-ui';
 import React, { useState } from 'react';
 import { Field, Form } from 'react-final-form';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { isNotEmpty, isValidEmail } from '../../utils/validate';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../actions/auth';
 import SocialAuth from './SocialAuth';
 import Logo from '../branding/Logo';
@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
     },
     w100: {
         width: '100%'
+    },
+    white: {
+        color: '#fff'
     }
 }));
 
@@ -54,7 +57,10 @@ function SignIn() {
     const [showPassword, setShowPassword] = useState(false);
     const classes = useStyles();
     const dispatch = useDispatch();
+    const { loading } = useSelector(state => state.auth);
+    console.log(loading);
     const onSubmit = (values) => {
+        if (loading) return;
         dispatch(login(values));
     };
     return (
@@ -103,8 +109,8 @@ function SignIn() {
                                     {showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </div>
-                            <Button fullWidth type="submit" disabled={submitting} variant="contained" color="primary" className={classes.button}>
-                                Login
+                            <Button fullWidth type="submit" variant="contained" color="primary" className={classes.button}>
+                                {(loading || submitting) ? <CircularProgress size={24} className={classes.white} /> : 'Login'}
                             </Button>
                         </Grid>
                     </form>

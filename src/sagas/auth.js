@@ -22,9 +22,9 @@ export function* registerUser({ payload }) {
         yield put({
             type: notificationActions.SET_NOTIFICATION,
             payload: {
-                message: error.message,
+                message: error?.response?.data?.message || error?.message || 'System Error: Please try after sometime',
                 severity: 'error',
-                timeout: 5000
+                timeout: 4000
             }
         })
     }
@@ -32,7 +32,7 @@ export function* registerUser({ payload }) {
 
 export function* loginUser({ payload }) {
     try {
-        const url = `${SERVICE_API}/services/login/getlogin`;
+        const url = `${SERVICE_API}/services/Loginvalidation/validlogin`;
         const response = yield call(api.post, url, payload);
         yield put({
             type: actions.LOGIN_USER_SUCCESS,
@@ -46,9 +46,9 @@ export function* loginUser({ payload }) {
         yield put({
             type: notificationActions.SET_NOTIFICATION,
             payload: {
-                message: error.message,
+                message: error?.response?.data?.message || error?.message || 'System Error: Please try after sometime',
                 severity: 'error',
-                timeout: 5000
+                timeout: 4000
             }
         })
     }

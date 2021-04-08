@@ -1,11 +1,11 @@
 import { TextField, Checkbox } from 'final-form-material-ui';
 import React, { useState } from 'react';
 import { Field, Form } from 'react-final-form';
-import { Grid, FormControlLabel, Button } from '@material-ui/core';
+import { Grid, FormControlLabel, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { isNotEmpty, isValidEmail } from '../../utils/validate';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/auth';
 import SocialAuth from './SocialAuth';
 import Logo from '../branding/Logo';
@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
     },
     w100: {
         width: '100%'
+    },
+    white: {
+        color: '#fff'
     }
 }));
 
@@ -54,7 +57,9 @@ function SignUp() {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
+    const { loading } = useSelector(state => state.auth);
     const onSubmit = (values) => {
+        if (loading) return;
         dispatch(register(values));
     };
     return (
@@ -118,9 +123,9 @@ function SignUp() {
                                     }
                                 />
                             </Grid>
-                            <Button fullWidth type="submit" disabled={submitting || !values.tnc} variant="contained" color="primary" className={classes.button}>
-                                Sign Up
-                        </Button>
+                            <Button fullWidth type="submit" disabled={!values.tnc} variant="contained" color="primary" className={classes.button}>
+                                {(loading || submitting) ? <CircularProgress size={24} className={classes.white} /> : 'Sign Up'}
+                            </Button>
                         </Grid>
                     </form>
                 }
