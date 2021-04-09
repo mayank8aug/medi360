@@ -9,11 +9,23 @@ export const menuItems = [
     },
     {
         label: 'Reports',
-        url: '/reports'
+        url: '/reports',
+        role: 1
     },
     {
         label: 'Actions',
-        url: '/actions'
+        url: '/actions',
+        role: 1
+    },
+    {
+        label: 'Search',
+        url: '/search',
+        role: 2
+    },
+    {
+        label: 'Patients List',
+        url: '/patients',
+        role: 2
     },
     {
         label: 'Medicine Alerts',
@@ -21,7 +33,8 @@ export const menuItems = [
     },
     {
         label: 'Precautions',
-        url: '/precautions'
+        url: '/precautions',
+        role: 1
     },
     {
         label: 'Lab Bookings',

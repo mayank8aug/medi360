@@ -16,12 +16,13 @@ const useStyles = makeStyles(() => ({
 function ReportsList() {
     const classes = useStyles();
     const { reports, loading } = useSelector(state => state.reports);
+    const { userDetails } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     useEffect(() => {
         if (!reports) {
-            dispatch(getReports());
+            dispatch(getReports({ username: userDetails.username }));
         }
-    }, [reports, dispatch]);
+    }, [reports, dispatch, userDetails]);
     if (loading) {
         return (
             <CircularProgress className={classes.spinner} />

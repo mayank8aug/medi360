@@ -112,6 +112,19 @@ function SignUp() {
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
+                                    label="I'm a Doctor"
+                                    control={
+                                        <Field
+                                            name="role"
+                                            component={Checkbox}
+                                            type="checkbox"
+                                            color="primary"
+                                        />
+                                    }
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControlLabel
                                     label={<span>I agree to the <Link className={classes.link} to="">Terms of Service</Link></span>}
                                     control={
                                         <Field

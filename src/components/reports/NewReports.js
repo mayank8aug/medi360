@@ -55,6 +55,7 @@ function NewReport() {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
+    const { userDetails } = useSelector(state => state.auth);
     const { loading, created } = useSelector(state => state.reports);
     
     const redirectToReports = () => {
@@ -72,7 +73,7 @@ function NewReport() {
                 const request = { ...values };
                 delete request.reports;
                 const formData = {
-                    values,
+                    values: { ...request, username: userDetails.username },
                     report: data
                 }
                 dispatch(createReport(formData));

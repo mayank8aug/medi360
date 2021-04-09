@@ -19,6 +19,8 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 import { SiPreCommit } from "react-icons/si";
 import CallToActionIcon from '@material-ui/icons/CallToAction';
 import { ImLab } from "react-icons/im";
+import SearchIcon from '@material-ui/icons/Search';
+import ViewListIcon from '@material-ui/icons/ViewList';
 
 const icons = {
     Home: HomeIcon,
@@ -29,7 +31,9 @@ const icons = {
     Precautions: SiPreCommit,
     'Lab Bookings': ImLab,
     'Medical Stores': StorefrontIcon,
-    Logout: ExitToAppIcon
+    Logout: ExitToAppIcon,
+    Search: SearchIcon,
+    'Patients List': ViewListIcon
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 function Sidebar() {
     const { pathname } = useLocation();
     const { expanded } = useSelector(state => state.sidebar);
+    const { userDetails } = useSelector(state => state.auth);
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
@@ -77,7 +82,8 @@ function Sidebar() {
             }}
         >
             <List>
-                {menuItems.map(({ label, url }) => {
+                {menuItems.map(({ label, url, role }) => {
+                    if (role && userDetails && role !== userDetails.role) return null;
                     const IconComponent = icons[label];
                     const hackUrl = `/medi360${url}`
                     let selected = pathname === hackUrl;

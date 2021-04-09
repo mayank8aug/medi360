@@ -8,6 +8,7 @@ const api = apiService();
 
 export function* registerUser({ payload }) {
     try {
+        if (payload.role) payload.role = 2;
         const url = `${SERVICE_API}/services/login/putlogin`;
         const response = yield call(api.post, url, payload);
         yield put({
